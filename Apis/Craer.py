@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect
-from flask_mysqldb import MySQL, MySQLdb
+from flask_mysqldb import MySQL
+from delete_user import delete_user  # Importar la lógica de eliminación
 
 load_dotenv()
 
@@ -39,3 +40,8 @@ def register():
             return f"Error al registrar el usuario: {e}"
 
     return render_template('register.html')
+
+# Nueva ruta para eliminar un usuario por ID
+@app.route('/delete/<int:id>', methods=['DELETE'])
+def delete(id):
+    return delete_user(id)  # Llamamos a la función del archivo delete_user.py
