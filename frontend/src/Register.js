@@ -9,7 +9,7 @@ const Register = () => {
 
     const userData = { username, password };
 
-    fetch('http://localhost:5000/api/register', {
+    fetch('http://localhost:5002/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
